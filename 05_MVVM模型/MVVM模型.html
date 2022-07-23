@@ -1,9 +1,9 @@
 <!--
  * @Author: “1SUNWEI1” 15891765235@163.com
- * @Date: 2022-07-22 11:26:13
+ * @Date: 2022-07-23 17:04:43
  * @LastEditors: “1SUNWEI1” 15891765235@163.com
- * @LastEditTime: 2022-07-23 17:09:05
- * @FilePath: \vue_basic\03_数据绑定\数据绑定.html
+ * @LastEditTime: 2022-07-23 17:24:08
+ * @FilePath: \vue_basic\05_MVVM模型\MVVM模型.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <!DOCTYPE html>
@@ -12,36 +12,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数据绑定</title>
+    <title>MVVM模型</title>
     <!-- 引入vue -->
     <script type="text/javascript" src="../js/vue.js"></script>
+
 </head>
 <body>
     <!-- 准备好一个容器 -->
     <div id="root">
-        <h1>hello! {{name}}</h1>
-        <a :href="school.url1.toUpperCase()">可点击1</a><br>
-        <!-- <a v-bind:href="school.url1.toUpperCase()">可点击1</a><br> -->
+        <h1>学校名称： {{name}}</h1>
+        <h1>学校地址： {{address}}</h1>
         
-        <a :href="school.url2">可点击2</a>
-        <a v-model:href="school.url2">可点击3</a>
     </div>
     
     <script type="text/javascript">
         Vue.config.productionTip = false; //阻止vue在启动时生成生产提示
 
-        // 创建VUE实例
-        new Vue ({
+        /* 
+         * vue实例
+         */
+        const vm = new Vue ({
             el:'#root',
-            data:{
-                name:'world!',
-                school:{
-                    url1:'https://baidu.com',
-                    url2:'https://baidu.com',
+            data(){ 
+                return{
+                    name:'西安邮电大学',
+                    address:'西安'
                 }
             }
         })
-
+        console.log(vm);
 
     </script>
 </body>

@@ -1,0 +1,42 @@
+<!--
+ * @Author: “1SUNWEI1” 15891765235@163.com
+ * @Date: 2022-07-23 20:08:11
+ * @LastEditors: “1SUNWEI1” 15891765235@163.com
+ * @LastEditTime: 2022-07-23 20:25:50
+ * @FilePath: \vue_basic\06_数据代理\2.何为数据代理.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>何为数据代理</title>
+     <!-- 引入vue -->
+     <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+<body>
+    <!-- 数据代理：通过一个对象代理对另一个对象中属性的操作：读/写 -->
+   
+    <script>
+        Vue.config.productionTip = false; //阻止vue在启动时生成生产提示
+        
+        let obj = {x:100};
+        let obj2 = {y:200};
+
+        // 通过obj2操作obj中的x值
+        Object.defineProperty(obj2,'x',{
+            get(){
+                return obj.x;
+            },
+
+            set(value){
+                obj.x = value;
+            }
+        })
+    </script>
+    
+</body>
+</html>

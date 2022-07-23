@@ -1,9 +1,9 @@
 <!--
  * @Author: “1SUNWEI1” 15891765235@163.com
- * @Date: 2022-07-22 11:26:13
+ * @Date: 2022-07-23 17:07:20
  * @LastEditors: “1SUNWEI1” 15891765235@163.com
- * @LastEditTime: 2022-07-23 17:09:05
- * @FilePath: \vue_basic\03_数据绑定\数据绑定.html
+ * @LastEditTime: 2022-07-23 17:08:43
+ * @FilePath: \vue_basic\04_el与data的两种写法\el与data的两种写法1.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <!DOCTYPE html>
@@ -12,32 +12,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数据绑定</title>
+    <title>el与data的两种写法</title>
     <!-- 引入vue -->
     <script type="text/javascript" src="../js/vue.js"></script>
+
 </head>
 <body>
     <!-- 准备好一个容器 -->
     <div id="root">
         <h1>hello! {{name}}</h1>
-        <a :href="school.url1.toUpperCase()">可点击1</a><br>
-        <!-- <a v-bind:href="school.url1.toUpperCase()">可点击1</a><br> -->
         
-        <a :href="school.url2">可点击2</a>
-        <a v-model:href="school.url2">可点击3</a>
     </div>
     
     <script type="text/javascript">
         Vue.config.productionTip = false; //阻止vue在启动时生成生产提示
 
-        // 创建VUE实例
+        /* 
+         * el的两种写法
+         */
+       
+        // // el第一种写法
+        // new Vue ({
+        //     el:'#root',
+        //     data:{
+        //         name:'world!',
+        //     }
+        // })
+
+        // // el第二种写法
+        // v.$mount('#root');
+       
+
+        /* 
+         * data的两种写法
+         */
         new Vue ({
             el:'#root',
-            data:{
+            // data第一种写法
+            /* data:{
                 name:'world!',
-                school:{
-                    url1:'https://baidu.com',
-                    url2:'https://baidu.com',
+            } */
+
+            // data第二种写法
+            /* data:function(){
+                return{
+                    name:'VUE,你好呀！',
+                }
+            } */
+
+            data(){ 
+                console.log('@@@',this);//this指的是vue实例
+                return{
+                    name:'VUE,你好呀！',
                 }
             }
         })
