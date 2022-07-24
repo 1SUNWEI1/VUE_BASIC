@@ -1,0 +1,62 @@
+<!--
+ * @Author: “1SUNWEI1” 15891765235@163.com
+ * @Date: 2022-07-24 07:39:24
+ * @LastEditors: “1SUNWEI1” 15891765235@163.com
+ * @LastEditTime: 2022-07-24 10:31:51
+ * @FilePath: \vue_basic\07_事件处理\1.事件的基本使用.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件的基本使用</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+   <div id="root">
+    <h1>欢迎来到{{name}}</h1>
+    <!-- <button v-on:click="showInfo">点击提示信息</button> -->
+    <!-- 简写 -->
+    <button @click="showInfo">点击提示信息1（不传参）</button>
+    <br>
+    <!-- @click="demo"和@click="demo($event)"效果一致，但后者可以传参 -->
+    <button @click="showInfo2($event,66)">点击提示信息2（传参）</button>
+        
+</div>
+    
+    <script>
+        Vue.config.productionTip = false; //阻止vue在启动时生成生产提示
+        
+        const vm = new Vue({
+            el:'#root',
+            data(){
+                return{
+                    name:'西安',
+                }
+            },
+
+            methods:{
+                showInfo(event){
+                    alert("游客，你好！");
+                    // console.log(event.target.innerText);
+                    // console.log(vm == this);
+                },
+
+                showInfo2(event,number){
+                    alert("游客"+number+"，你好！");
+                    // console.log(event,number)
+                    // console.log(event.target.innerText);
+                    // console.log(vm == this);
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
