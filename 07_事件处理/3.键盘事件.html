@@ -1,0 +1,94 @@
+<!--
+ * @Author: “1SUNWEI1” 15891765235@163.com
+ * @Date: 2022-07-28 10:42:34
+ * @LastEditors: “1SUNWEI1” 15891765235@163.com
+ * @LastEditTime: 2022-07-28 20:34:28
+ * @FilePath: \vue_basic\07_事件处理\3.键盘事件.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+    
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h1>欢迎来到{{name}}</h1>
+
+        <!-- 按键别名：
+                回车：enter
+                删除：delete 捕获删除和退格键
+                退出：esc
+                空格：space
+                换行：tab(特殊键，必须配合keydown使用)
+                上：up
+                下：down
+                左：left
+                右：right 
+        -->
+        输入框1：<input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo"></input><br>
+        输入框2：<input type="text" placeholder="按下任意键提示输入" @keyup="showInfo2"></input><br>
+        输入框3：<input type="text" placeholder="按下Tab键提示输入" @keydown.tab="showInfo"></input><br>
+    
+
+        <!-- 系统修饰符(用法特殊):
+                ctrl、alert、shift、meta(windows中win键)
+                (1)配合keyup键使用：按下修饰键的同时，再按下其他键，随后释放其他键，事件才被触发。
+                (2)配合keydown使用：正常触发事件。 
+        -->
+        输入框4：<input type="text" placeholder="按下ctrl键+任意键提示输入" @keyup.ctrl="showInfo"></input><br>
+        输入框5：<input type="text" placeholder="按下ctrl键提示输入" @keydown.ctrl="showInfo"></input><br>
+        
+        <!-- 也可以使用keyCode去指定具体的按键(不推荐) 特性即将废弃-->
+        <!-- enter的keyCode值为13 -->
+        输入框6：<input type="text" placeholder="按下enter键提示输入(keyCode测试)" @keydown.13="showInfo"></input><br>
+        
+        <!-- Vue.config.keyCode.自定义键名 = 键码，可以去定制按键别名 不推荐 -->
+        输入框6：<input type="text" placeholder="按下enter键提示输入" @keydown.hiuche="showInfo"></input><br>
+        
+        <!-- 修饰符可以连用 -->
+        输入框7：<input type="text" placeholder="按下ctrl+y键提示输入" @keydown.ctrl.y="showInfo"></input><br>
+        
+
+          
+    </div>
+    
+    <script>
+        Vue.config.productionTip = false; //阻止vue在启动时生成生产提示
+        
+        Vue.config.keyCodes.hiuche = 13; //定义一个别名按键
+
+        const vm = new Vue({
+            el:'#root',
+            data(){
+                return{
+                    name:'西安',
+                }
+            },
+
+            methods:{
+                showInfo(event){
+                    console.log(event.key,event.keyCode);
+                    console.log(event.target.value);
+                    // console.log(vm == this);
+                },
+
+                showInfo2(event){
+                    // console.log(event,number)
+                    console.log(event.key,event.keyCode);
+                    console.log(event.target.value);
+                    // console.log(vm == this);
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
