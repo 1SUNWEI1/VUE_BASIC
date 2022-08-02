@@ -1,0 +1,43 @@
+<!--
+ * @Author: “1SUNWEI1” 15891765235@163.com
+ * @Date: 2022-07-28 20:59:25
+ * @LastEditors: “1SUNWEI1” 15891765235@163.com
+ * @LastEditTime: 2022-07-28 21:53:12
+ * @FilePath: \vue_basic\08_计算属性\1.姓名案例_插值语法实现.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姓名案例_插值语法实现</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+    
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        姓：<input type="text" v-model:value="firstName"></input><br>
+        名：<input type="text" v-model:value="lastName"></input><br>
+        姓名：<span>{{firstName}}-{{lastName}}</span>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false; //阻止vue在启动时生成生产提示
+        
+        const vm = new Vue({
+            el:'#root',
+            data(){
+                return{
+                    firstName:'zhang',
+                    lastName:'san'
+                }
+            },
+        })
+
+    </script>
+</body>
+</html>
