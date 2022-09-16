@@ -19,16 +19,16 @@
 </head>
 <body>
     <!-- 准备好一个容器 -->
-   <div id="root">
-    <h1>欢迎来到{{name}}</h1>
-    <!-- <button v-on:click="showInfo">点击提示信息</button> -->
-    <!-- 简写 -->
-    <button @click="showInfo">点击提示信息1（不传参）</button>
-    <br>
-    <!-- @click="demo"和@click="demo($event)"效果一致，但后者可以传参 -->
-    <button @click="showInfo2($event,66)">点击提示信息2（传参）</button>
+    <div id="root">
+        <h1>欢迎来到{{name}}</h1>
+        <!-- <button v-on:click="showInfo">点击提示信息</button> -->
+        <!-- 简写 -->
+        <button @click="showInfo">点击提示信息1（不传参）</button>
+        <br>
+        <!-- @click="demo"和@click="demo($event)"效果一致，但后者可以传参 -->
+        <button @click="showInfo2($event,66)">点击提示信息2（传参）</button>
         
-</div>
+    </div>
     
     <script>
         Vue.config.productionTip = false; //阻止vue在启动时生成生产提示
