@@ -1,0 +1,38 @@
+<!--
+ * @Author: “1SUNWEI1” 15891765235@163.com
+ * @Date: 2022-09-27 15:25:11
+ * @LastEditors: “1SUNWEI1” 15891765235@163.com
+ * @LastEditTime: 2022-09-27 16:02:13
+ * @FilePath: \vue_basic\11_条件渲染\条件渲染.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+      <h2 v-show="false">欢迎来到{{name}}</h2>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    Vue.config.productionTip = false;
+
+    const vm = new Vue({
+      el: "#root",
+      data: {
+        name: "南京",
+      },
+
+      methods: {},
+    });
+  </script>
+</html>
