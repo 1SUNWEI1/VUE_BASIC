@@ -2,7 +2,7 @@
  * @Author: “1SUNWEI1” 15891765235@163.com
  * @Date: 2022-09-27 15:25:11
  * @LastEditors: “1SUNWEI1” 15891765235@163.com
- * @LastEditTime: 2022-11-17 16:10:15
+ * @LastEditTime: 2022-11-17 16:13:47
  * @FilePath: \vue_basic\12_列表渲染\6.VUE监测数据改变的原理.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -19,14 +19,8 @@
   <body>
     <!-- 准备好一个容器 -->
     <div id="root">
-      <h2>人员列表</h2>
-      <!-- <input type="text" placeholder="请输入名字" v-model="keyWord"></input> -->
-      <button @click="updateMei">更新马冬梅信息</button>
-      <ul>
-        <li v-for="(person,index) of personList" :key="person.id">
-          {{person.name}}-{{person.age}}-{{person.sex}}
-        </li>
-      </ul>
+      <h2>学校名称：{{name}}</h2>
+      <h2>学校地址：{{address}}</h2>
     </div>
   </body>
 
@@ -35,25 +29,8 @@
     const vm = new Vue({
       el: "#root",
       data: {
-        personList: [
-          { id: "001", name: "马冬梅", age: 18, sex: "女" },
-          { id: "002", name: "周冬雨", age: 13, sex: "女" },
-          { id: "003", name: "周杰伦", age: 30, sex: "男" },
-          { id: "004", name: "钟汉良", age: 23, sex: "男" },
-        ],
-      },
-      methods: {
-        updateMei() {
-          // this.personList[0].name = '马老师';
-          // this.personList[0].age = '50';
-          // this.personList[0].sex = '男';
-          this.personList[0] = {
-            id: "001",
-            name: "马老师",
-            age: 50,
-            sex: "男",
-          };
-        },
+        name: "西安邮电大学",
+        address: "西安",
       },
     });
   </script>

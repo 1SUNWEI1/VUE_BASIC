@@ -1,0 +1,82 @@
+<!--
+ * @Author: “1SUNWEI1” 15891765235@163.com
+ * @Date: 2022-09-27 15:25:11
+ * @LastEditors: “1SUNWEI1” 15891765235@163.com
+ * @LastEditTime: 2022-11-17 20:01:52
+ * @FilePath: \vue_basic\12_列表渲染\8.VUE监测数据改变的原理-数组.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VUE监测数据改变的原理-数组</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+      <h1>学校信息</h1>
+      <h2>学校名称：{{school.name}}</h2>
+      <h2>学校地址：{{school.address}}</h2>
+
+      <hr></hr>
+      <h1>学生信息</h1>
+      <button @click="addSex">添加一个性别属性，默认值为男</button>
+      <h2>姓名：{{student.name}}</h2>
+      <h2 v-if="student.sex">性别：{{student.sex}}</h2>
+      <h2>
+        年龄：真实年龄：{{student.age.rAge}},对外年龄：{{student.age.sAge}}
+      </h2>
+
+      <h2>爱好：</h2>
+      <ul>
+        <li v-for="(h,index) in student.hobby" :key="index">
+          {{h}}
+        </li>
+      </ul>
+
+      <h2>朋友们：</h2>
+      <ul>
+        <li v-for="(f,index) in student.friends" :key="index">
+          {{f.name}}-{{f.age}}
+        </li>
+      </ul>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+      el: "#root",
+      data: {
+        school: {
+          name: "西安邮电大学",
+          address: "西安",
+        },
+        student: {
+          name: "sun",
+          age: {
+            rAge: 30,
+            sAge: 18,
+          },
+          hobby:['美食','睡觉','听音乐'],
+          friends: [
+            { name: "JingYu", age: 19 },
+            { name: "Tim", age: 20 },
+          ],
+        },
+      },
+
+      methods: {
+        addSex() {
+          // Vue.set(this.student, "sex", "男");
+          vm.$set(this.student, "sex", "男");
+        },
+      },
+    });
+  </script>
+</html>
